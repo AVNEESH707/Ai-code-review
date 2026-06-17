@@ -6,7 +6,15 @@ const aiRoutes = require("./routes/ai.routes");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://ai-code-review-psi-two.vercel.app',
+    'http://localhost:5173'
+  ],
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.use("/ai", aiRoutes);
